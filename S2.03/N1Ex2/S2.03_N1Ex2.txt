@@ -1,0 +1,126 @@
+db.createCollection('Order', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Order',
+      required: ['Data/Hour', 'Order type', 'Quanty', 'Total price', 'Product', 'Client'],
+      properties: {
+        Data / Hour: {
+          bsonType: 'date'
+        },
+        Order type: {
+          enum:
+        },
+        Quanty: {
+          bsonType: 'int'
+        },
+        Total price: {
+          bsonType: 'int'
+        },
+        Product: {
+          bsonType: 'array',
+          items: {
+            title: 'object',
+            required: ['Product type', 'Name', 'Description', 'Image', 'Price'],
+            properties: {
+              Product type: {
+                enum:
+              },
+              Name: {
+                bsonType: 'string'
+              },
+              Description: {
+                bsonType: 'string'
+              },
+              Image: {
+                bsonType: 'string'
+              },
+              Price: {
+                bsonType: 'int'
+              },
+              Pizza type: {
+                bsonType: 'object',
+                title: 'object',
+              }
+            }
+          }
+        },
+        Client: {
+          bsonType: 'objectId'
+        }
+      }
+    }
+  }
+});
+db.createCollection('Store', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Store',
+      required: ['Adrees', 'Employee', 'Order'],
+      properties: {
+        Adrees: {
+          bsonType: 'string'
+        },
+        Employee: {
+          bsonType: 'array',
+          items: {
+            title: 'object',
+            required: ['Name', 'Lastname', 'NIF', 'Telephone'],
+            properties: {
+              Name: {
+                bsonType: 'string'
+              },
+              Lastname: {
+                bsonType: 'string'
+              },
+              NIF: {
+                bsonType: 'string'
+              },
+              Telephone: {
+                bsonType: 'int'
+              }
+            }
+          }
+        },
+        Order: {
+          bsonType: 'objectId'
+        }
+      }
+    }
+  }
+});
+db.createCollection('Client', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Client',
+      required: ['Name', 'Lastname', 'Adress', 'Telephone', 'Locality', 'Province', 'Postal code'],
+      properties: {
+        Name: {
+          bsonType: 'string'
+        },
+        Lastname: {
+          bsonType: 'string'
+        },
+        Adress: {
+          bsonType: 'string'
+        },
+        Telephone: {
+          bsonType: 'int'
+        },
+        Locality: {
+          bsonType: 'string'
+        },
+        Province: {
+          bsonType: 'string'
+        },
+        Postal code: {
+          bsonType: 'int'
+        }
+      }
+    }
+  }
+});
+Main Diagram
+Properties

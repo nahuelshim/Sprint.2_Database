@@ -1,0 +1,128 @@
+db.createCollection('Buy/Sale', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Buy/Sale',
+      required: ['Date', 'Employee', 'Glass', 'Client'],
+      properties: {
+        Date: {
+          bsonType: 'date'
+        },
+        Employee: {
+          bsonType: 'array',
+          items: {
+            title: 'object',
+            required: ['Name', 'Adress', 'Telephone'],
+            properties: {
+              Name: {
+                bsonType: 'string'
+              },
+              Adress: {
+                bsonType: 'string'
+              },
+              Telephone: {
+                bsonType: 'string'
+              }
+            }
+          }
+        },
+        Glass: {
+          bsonType: 'array',
+          items: {
+            title: 'object',
+            required: ['Mount type', 'Color', 'Left glass color', 'Right class color', 'Price', 'Brand'],
+            properties: {
+              Left glass graduation: {
+                bsonType: 'decimal'
+              },
+              Right glass graduation: {
+                bsonType: 'decimal'
+              },
+              Mount type: {
+                bsonType: 'string'
+              },
+              Color: {
+                bsonType: 'string'
+              },
+              Left glass color: {
+                bsonType: 'string'
+              },
+              Right class color: {
+                bsonType: 'string'
+              },
+              Price: {
+                bsonType: 'decimal'
+              },
+              Brand: {
+                bsonType: 'object',
+                title: 'object',
+                required: ['Name', 'Supplier'],
+                properties: {
+                  Name: {
+                    bsonType: 'string'
+                  },
+                  Supplier: {
+                    bsonType: 'object',
+                    title: 'object',
+                    required: ['Name', 'Adress', 'Telephone', 'FAX', 'NIF'],
+                    properties: {
+                      Name: {
+                        bsonType: 'string'
+                      },
+                      Adress: {
+                        bsonType: 'string'
+                      },
+                      Telephone: {
+                        bsonType: 'int'
+                      },
+                      FAX: {
+                        bsonType: 'string'
+                      },
+                      NIF: {
+                        bsonType: 'string'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        Client: {
+          bsonType: 'objectId'
+        }
+      }
+    }
+  }
+});
+db.createCollection('Client', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      title: 'Client',
+      required: ['Name', 'Postal code', 'Telephone', 'e-mail', 'Registration date'],
+      properties: {
+        Name: {
+          bsonType: 'string'
+        },
+        Postal code: {
+          bsonType: 'int'
+        },
+        Telephone: {
+          bsonType: 'int'
+        },
+        e - mail: {
+          bsonType: 'string'
+        },
+        Registration date: {
+          bsonType: 'date'
+        },
+        Recommended customer: {
+          bsonType: 'objectId'
+        }
+      }
+    }
+  }
+});
+Main Diagram
+Properties
